@@ -12,6 +12,7 @@ from typing import List  # noqa: F401
 
 from libqtile.layout.columns import Columns
 from libqtile.layout.xmonad import MonadTall, MonadWide
+from libqtile.layout.max import Max
 from libqtile.layout.stack import Stack
 from libqtile.layout.floating import Floating
 
@@ -84,7 +85,7 @@ keys = [
 ]
 
 groups = [
-        Group('1', label='WWW', matches=[Match(wm_class='firefox')], layout='monadtall'),
+        Group('1', label='WWW', matches=[Match(wm_class='firefox')], layout='max'),
         Group('2', label='SYS', layout='monadtall'),
         Group('3', label='DOC', matches=[Match(wm_class='Thunar')], layout='monadtall'),
         Group('4', label='DEV', matches=[Match(wm_class='Thunar')], layout='monadtall'),
@@ -117,7 +118,7 @@ layouts = [
             border_width=2,
             num_stacks=1,
             margin=4,
-            ),
+        ),
         MonadTall(
             border_normal=catppuccin['base'],
             border_focus=catppuccin['lavender'],
@@ -125,7 +126,7 @@ layouts = [
             border_width=2,
             single_border_width=2,
             single_margin=4,
-            ),
+        ),
         Columns(
             border_normal=catppuccin['base'],
             border_focus=catppuccin['lavender'],
@@ -135,8 +136,14 @@ layouts = [
             border_on_single=2,
             margin=4,
             margin_on_single=4,
-            )
-        ]
+        ),
+        Max(
+            border_normal=catppuccin['base'],
+            border_focus=catppuccin['lavender'],
+            border_width=2,
+            margin=4
+        )
+    ]
 
 floating_layout = Floating(
         border_normal=catppuccin['base'],
@@ -166,147 +173,140 @@ widget_defaults = dict(
         font="FiraCode Nerd Font",
         fontsize=12,
         padding=3,
-        )
+)
 extension_defaults = widget_defaults.copy()
 
-screens = [
-        Screen(
-            top=bar.Bar(
-                [
-                    widget.Spacer(
-                        length=4
-                        ),
-                    widget.TextBox(
-                        text='',
-                        foreground=catppuccin['text'],
-                        fontsize=20,
-                        ),
-                    widget.Spacer(
-                        length=4
-                        ),
-                    widget.GroupBox(
-                        fontsize=9,
-                        margin_y=3,
-                        margin_x=0,
-                        padding_y=5,
-                        padding_x=6,
-                        borderwidth=3,
-                        border_width=3,
-                        rounded=True,
-                        highlight_method='line',
-                        active=catppuccin['text'],
-                        inactive=catppuccin['surface2'],
-                        highlight_color=catppuccin['surface1'],
-                        this_current_screen_border=catppuccin['lavender'],
-                        this_screen_border=catppuccin['lavender'],
-                        ),
-                    widget.TextBox(
-                        text='|',
-                        foreground=catppuccin['text'],
-                        fontsize=14
-                        ),
-                    widget.CurrentLayoutIcon(
-                        padding=0,
-                        scale=0.7
-                        ),
-                    widget.CurrentLayout(
-                        foreground=catppuccin['text'],
-                        padding=5
-                        ),
-                    widget.TextBox(
-                        text='|',
-                        foreground=catppuccin['text'],
-                        fontsize=14
-                        ),
-                    widget.WindowName(
-                        fontsize=9,
-                        padding=0
-                        ),
-                    widget.TextBox(
-                            text='',
-                            fontsize='23',
-                            foreground=catppuccin['yellow'],
-                            padding=0
-                            ),
-                widget.CheckUpdates(
-                        distro = "Arch_checkupdates",
-                        display_format = " {updates}",
-                        no_update_string=' 0',
-                        background=catppuccin['yellow'],
-                        foreground = catppuccin['text'],
-                        colour_have_updates = catppuccin['surface0'],
-                        colour_no_updates = catppuccin['surface0'],
-                        mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('alacritty' + ' -e sudo pacman -Syu')},
-                        padding = 5,
-                        ),
-                widget.TextBox(
-                        text='',
-                        fontsize='23',
-                        foreground=catppuccin['peach'],
-                        background=catppuccin['yellow'],
-                        padding=0
-                        ),
-                widget.Net(
-                        interface='wlan0',
-                        format='Net: {down} ↓↑{up}',
-                        foreground=catppuccin['surface0'],
-                        background=catppuccin['peach'],
-                        padding=5,
-                        prefix='M',
-                        ),
-                widget.TextBox(
-                        text='',
-                        fontsize='23',
-                        foreground=catppuccin['red'],
-                        background=catppuccin['peach'],
-                        padding=0
-                        ),
-                widget.TextBox(
-                        text='',
-                        fontsize=15,
-                        foreground=catppuccin['base'],
-                        background=catppuccin['red'],
-                ),
-                widget.DF(
-                        visible_on_warn=False, 
-                        foreground=catppuccin['base'],
-                        background=catppuccin['red'],
-                        partition='/',
-                        format='({uf}{m}|{r:.0f}%)'
-
-                        ),
-                widget.TextBox(
-                        text='',
-                        fontsize='23',
-                        foreground=catppuccin['blue'],
-                        background=catppuccin['red'],
-                        padding=0
-                        ),
-                widget.Clock(
-                        foreground=catppuccin['base'],
-                        background=catppuccin['blue'],
-                        format='%d/%m/%y - %H:%M',
-                        ),
-                widget.TextBox(
-                        text='',
-                        fontsize='23',
-                        foreground=catppuccin['lavender'],
-                        background=catppuccin['blue'],
-                        padding=0
-                        ),
-                widget.Systray(
-                    foreground=catppuccin['text'],
-                    background=catppuccin['lavender']
-                ),
-                widget.Spacer(
-                    length=4,
-                    background=catppuccin['lavender']
-                ),
-            ],
-            background=catppuccin['base'], size=24, margin=4,
-        ),
+screens = [Screen(top=bar.Bar([
+    widget.Spacer(
+        length=4
     ),
-]
+    widget.TextBox(
+        text='',
+        foreground=catppuccin['text'],
+        fontsize=20,
+    ),
+    widget.Spacer(
+        length=4
+    ),
+    widget.GroupBox(
+        fontsize=9,
+        margin_y=3,
+        margin_x=0,
+        padding_y=5,
+        padding_x=6,
+        borderwidth=3,
+        border_width=3,
+        rounded=True,
+        highlight_method='line',
+        active=catppuccin['text'],
+        inactive=catppuccin['surface2'],
+        highlight_color=catppuccin['surface1'],
+        this_current_screen_border=catppuccin['lavender'],
+        this_screen_border=catppuccin['lavender'],
+    ),
+    widget.TextBox(
+        text='|',
+        foreground=catppuccin['text'],
+        fontsize=14
+    ),
+    widget.CurrentLayoutIcon(
+        padding=0,
+        scale=0.7
+    ),
+    widget.CurrentLayout(
+        foreground=catppuccin['text'],
+        padding=5
+    ),
+    widget.TextBox(
+        text='|',
+        foreground=catppuccin['text'],
+        fontsize=14
+    ),
+    widget.WindowName(
+        fontsize=9,
+        padding=0
+    ),
+    widget.TextBox(
+        text='',
+        fontsize='23',
+        foreground=catppuccin['red'],
+        padding=0
+    ),
+    widget.CheckUpdates(
+        distro = "Arch_checkupdates",
+        display_format = " {updates}",
+        no_update_string=' 0',
+        background=catppuccin['red'],
+        foreground = catppuccin['text'],
+        colour_have_updates = catppuccin['surface0'],
+        colour_no_updates = catppuccin['surface0'],
+        mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('alacritty' + ' -e sudo pacman -Syu')},
+        padding = 5,
+    ),
+    widget.TextBox(
+        text='',
+        fontsize='23',
+        foreground=catppuccin['peach'],
+        background=catppuccin['red'],
+        padding=0
+    ),
+    widget.Net(
+        interface='wlan0',
+        format='Net: {down} ↓↑{up}',
+        foreground=catppuccin['surface0'],
+        background=catppuccin['peach'],
+        padding=5,
+        prefix='M',
+    ),
+    widget.TextBox(
+        text='',
+        fontsize='23',
+        foreground=catppuccin['yellow'],
+        background=catppuccin['peach'],
+        padding=0
+    ),
+    widget.TextBox(
+        text='',
+        fontsize=15,
+        foreground=catppuccin['base'],
+        background=catppuccin['yellow'],
+    ),
+    widget.DF(
+        visible_on_warn=False, 
+        foreground=catppuccin['base'],
+        background=catppuccin['yellow'],
+        partition='/',
+        format='({uf}{m}|{r:.0f}%)'
+    ),
+    widget.TextBox(
+        text='',
+        fontsize='23',
+        foreground=catppuccin['green'],
+        background=catppuccin['yellow'],
+        padding=0
+    ),
+    widget.Clock(
+        foreground=catppuccin['base'],
+        background=catppuccin['green'],
+        format='%d/%m/%y - %H:%M',
+    ),
+    widget.TextBox(
+        text='',
+        fontsize='23',
+        foreground=catppuccin['shappire'],
+        background=catppuccin['green'],
+        padding=0
+    ),
+    widget.Systray(
+        foreground=catppuccin['text'],
+        background=catppuccin['shappire']
+    ),
+    widget.Spacer(
+        length=4,
+        background=catppuccin['shappire']
+    )], 
+    background=catppuccin['base'], size=24, margin=4,
+))]
 
 # Drag floating layouts.
 mouse = [
@@ -320,18 +320,6 @@ dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
-floating_layout = layout.Floating(
-    float_rules=[
-        # Run the utility of `xprop` to see the wm class and name of an X client.
-        *layout.Floating.default_float_rules,
-        Match(wm_class="confirmreset"),  # gitk
-        Match(wm_class="makebranch"),  # gitk
-        Match(wm_class="maketag"),  # gitk
-        Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="branchdialog"),  # gitk
-        Match(title="pinentry"),  # GPG key password entry
-    ]
-)
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
