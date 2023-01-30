@@ -19,7 +19,7 @@ from libqtile.layout.floating import Floating
 from qtile_extras import widget
 from qtile_extras.widget.decorations import BorderDecoration
 
-from colors import catppuccin
+from colors import deepocean
 
 mod = "mod4"
 terminal = "alacritty"
@@ -113,41 +113,41 @@ for i in groups:
 
 layouts = [
     Stack(
-        border_normal=catppuccin['base'],
-        border_focus=catppuccin['lavender'],
+        border_normal=deepocean['highlight'],
+        border_focus=deepocean['blue'],
         border_width=2,
         num_stacks=1,
         margin=4,
     ),
     MonadTall(
-        border_normal=catppuccin['base'],
-        border_focus=catppuccin['lavender'],
+        border_normal=deepocean['highlight'],
+        border_focus=deepocean['blue'],
         margin=4,
         border_width=2,
         single_border_width=2,
         single_margin=4,
     ),
     Columns(
-        border_normal=catppuccin['base'],
-        border_focus=catppuccin['lavender'],
+        border_normal=deepocean['highlight'],
+        border_focus=deepocean['blue'],
         border_width=2,
-        border_normal_stack=catppuccin['base'],
-        border_focus_stack=catppuccin['green'],
+        border_normal_stack=deepocean['highlight'],
+        border_focus_stack=deepocean['green'],
         border_on_single=2,
         margin=4,
         margin_on_single=4,
     ),
     Max(
-        border_normal=catppuccin['base'],
-        border_focus=catppuccin['lavender'],
+        border_normal=deepocean['highlight'],
+        border_focus=deepocean['blue'],
         border_width=2,
         margin=4
     )
 ]
 
 floating_layout = Floating(
-    border_normal=catppuccin['base'],
-    border_focus=catppuccin['lavender'],
+    border_normal=deepocean['highlight'],
+    border_focus=deepocean['blue'],
     border_width=2,
     float_rules=[
         *Floating.default_float_rules,
@@ -182,7 +182,7 @@ screens = [Screen(top=bar.Bar([
     ),
     widget.TextBox(
         text='',
-        foreground=catppuccin['text'],
+        foreground=deepocean['white'],
         fontsize=20,
     ),
     widget.Spacer(
@@ -198,15 +198,15 @@ screens = [Screen(top=bar.Bar([
         border_width=3,
         rounded=True,
         highlight_method='line',
-        active=catppuccin['text'],
-        inactive=catppuccin['surface2'],
-        highlight_color=catppuccin['surface1'],
-        this_current_screen_border=catppuccin['lavender'],
-        this_screen_border=catppuccin['lavender'],
+        active=deepocean['white'],
+        inactive=deepocean['tree'],
+        highlight_color=deepocean['highlight'],
+        this_current_screen_border=deepocean['blue'],
+        this_screen_border=deepocean['blue'],
     ),
     widget.TextBox(
         text='|',
-        foreground=catppuccin['text'],
+        foreground=deepocean['white'],
         fontsize=14
     ),
     widget.CurrentLayoutIcon(
@@ -214,12 +214,12 @@ screens = [Screen(top=bar.Bar([
         scale=0.7
     ),
     widget.CurrentLayout(
-        foreground=catppuccin['text'],
+        foreground=deepocean['white'],
         padding=5
     ),
     widget.TextBox(
         text='|',
-        foreground=catppuccin['text'],
+        foreground=deepocean['white'],
         fontsize=14
     ),
     widget.WindowName(
@@ -229,83 +229,83 @@ screens = [Screen(top=bar.Bar([
     widget.TextBox(
         text='',
         fontsize='23',
-        foreground=catppuccin['red'],
+        foreground=deepocean['red'],
         padding=0
     ),
     widget.CheckUpdates(
-        distro = "Arch_checkupdates",
-        display_format = " {updates}",
+        distro="Arch_checkupdates",
+        display_format=" {updates}",
         no_update_string=' 0',
-        background=catppuccin['red'],
-        foreground = catppuccin['text'],
-        colour_have_updates = catppuccin['surface0'],
-        colour_no_updates = catppuccin['surface0'],
-        mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('alacritty' + ' -e sudo pacman -Syu')},
-        padding = 5,
+        background=deepocean['red'],
+        foreground=deepocean['white'],
+        colour_have_updates=deepocean['highlight'],
+        colour_no_updates=deepocean['highlight'],
+        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('alacritty' + ' -e sudo pacman -Syu')},
+        padding=5,
     ),
     widget.TextBox(
         text='',
         fontsize='23',
-        foreground=catppuccin['peach'],
-        background=catppuccin['red'],
+        foreground=deepocean['orange'],
+        background=deepocean['red'],
         padding=0
     ),
     widget.Net(
         interface='wlan0',
         format='Net: {down} ↓↑{up}',
-        foreground=catppuccin['surface0'],
-        background=catppuccin['peach'],
+        foreground=deepocean['highlight'],
+        background=deepocean['orange'],
         padding=5,
         prefix='M',
     ),
     widget.TextBox(
         text='',
         fontsize='23',
-        foreground=catppuccin['yellow'],
-        background=catppuccin['peach'],
+        foreground=deepocean['yellow'],
+        background=deepocean['orange'],
         padding=0
     ),
     widget.TextBox(
         text='',
         fontsize=15,
-        foreground=catppuccin['base'],
-        background=catppuccin['yellow'],
+        foreground=deepocean['highlight'],
+        background=deepocean['yellow'],
     ),
     widget.DF(
         visible_on_warn=False, 
-        foreground=catppuccin['base'],
-        background=catppuccin['yellow'],
+        foreground=deepocean['highlight'],
+        background=deepocean['yellow'],
         partition='/',
         format='({uf}{m}|{r:.0f}%)'
     ),
     widget.TextBox(
         text='',
         fontsize='23',
-        foreground=catppuccin['green'],
-        background=catppuccin['yellow'],
+        foreground=deepocean['green'],
+        background=deepocean['yellow'],
         padding=0
     ),
     widget.Clock(
-        foreground=catppuccin['base'],
-        background=catppuccin['green'],
+        foreground=deepocean['highlight'],
+        background=deepocean['green'],
         format='%d/%m/%y - %H:%M',
     ),
     widget.TextBox(
         text='',
         fontsize='23',
-        foreground=catppuccin['shappire'],
-        background=catppuccin['green'],
+        foreground=deepocean['blue'],
+        background=deepocean['green'],
         padding=0
     ),
     widget.Systray(
-        foreground=catppuccin['text'],
-        background=catppuccin['shappire']
+        foreground=deepocean['white'],
+        background=deepocean['blue']
     ),
     widget.Spacer(
         length=4,
-        background=catppuccin['shappire']
+        background=deepocean['blue']
     )], 
-    background=catppuccin['base'], size=24, margin=4,
+    background=deepocean['background'], size=24, margin=4,
 ))]
 
 # Drag floating layouts.
