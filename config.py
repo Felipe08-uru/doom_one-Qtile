@@ -132,7 +132,7 @@ layouts = [
         border_focus=deepocean['blue'],
         border_width=2,
         border_normal_stack=deepocean['highlight'],
-        border_focus_stack=deepocean['green'],
+        border_focus_stack=deepocean['purple'],
         border_on_single=2,
         margin=4,
         margin_on_single=4,
@@ -229,14 +229,14 @@ screens = [Screen(top=bar.Bar([
     widget.TextBox(
         text='',
         fontsize='23',
-        foreground=deepocean['red'],
+        foreground=deepocean['yellow'],
         padding=0
     ),
     widget.CheckUpdates(
         distro="Arch_checkupdates",
         display_format=" {updates}",
         no_update_string=' 0',
-        background=deepocean['red'],
+        background=deepocean['yellow'],
         foreground=deepocean['white'],
         colour_have_updates=deepocean['highlight'],
         colour_no_updates=deepocean['highlight'],
@@ -247,21 +247,21 @@ screens = [Screen(top=bar.Bar([
         text='',
         fontsize='23',
         foreground=deepocean['orange'],
-        background=deepocean['red'],
+        background=deepocean['yellow'],
         padding=0
     ),
     widget.Net(
         interface='wlan0',
-        format='Net: {down} ↓↑{up}',
+        format='{down} ↓↑{up} ',
         foreground=deepocean['highlight'],
         background=deepocean['orange'],
-        padding=5,
+        padding=0,
         prefix='M',
     ),
     widget.TextBox(
         text='',
         fontsize='23',
-        foreground=deepocean['yellow'],
+        foreground=deepocean['red'],
         background=deepocean['orange'],
         padding=0
     ),
@@ -269,32 +269,38 @@ screens = [Screen(top=bar.Bar([
         text='',
         fontsize=15,
         foreground=deepocean['highlight'],
-        background=deepocean['yellow'],
+        background=deepocean['red'],
     ),
     widget.DF(
         visible_on_warn=False, 
         foreground=deepocean['highlight'],
-        background=deepocean['yellow'],
+        background=deepocean['red'],
         partition='/',
         format='({uf}{m}|{r:.0f}%)'
     ),
     widget.TextBox(
         text='',
         fontsize='23',
-        foreground=deepocean['green'],
-        background=deepocean['yellow'],
+        foreground=deepocean['purple'],
+        background=deepocean['red'],
         padding=0
+    ),
+    widget.TextBox(
+        text=' ',
+        fontsize=13,
+        foreground=deepocean['highlight'],
+        background=deepocean['purple']
     ),
     widget.Clock(
         foreground=deepocean['highlight'],
-        background=deepocean['green'],
+        background=deepocean['purple'],
         format='%d/%m/%y - %H:%M',
     ),
     widget.TextBox(
         text='',
         fontsize='23',
         foreground=deepocean['blue'],
-        background=deepocean['green'],
+        background=deepocean['purple'],
         padding=0
     ),
     widget.Systray(
