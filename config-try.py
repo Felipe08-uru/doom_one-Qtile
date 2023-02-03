@@ -19,7 +19,7 @@ from libqtile.layout.floating import Floating
 from qtile_extras import widget
 from qtile_extras.widget.decorations import BorderDecoration
 
-from colors import deepocean
+from colors import catppuccin
 
 mod = "mod4"
 terminal = "alacritty"
@@ -85,12 +85,12 @@ keys = [
 ]
 
 groups = [
-    Group('1', label='WWW', matches=[Match(wm_class='firefox')], layout='max'),
-    Group('2', label='SYS', layout='monadtall'),
-    Group('3', label='DOC', matches=[Match(wm_class='Thunar')], layout='monadtall'),
-    Group('4', label='DEV', matches=[Match(wm_class='Thunar')], layout='monadtall'),
-    Group('5', label='CHAT', matches=[Match(wm_class='discord')], layout='monadtall'),
-    Group('6', label='MUS', matches=[Match(wm_class='Spotify')], layout='monadtall'),
+    Group('1', label='', matches=[Match(wm_class='firefox')], layout='max'),
+    Group('2', label='󰆍', layout='monadtall'),
+    Group('3', label='', matches=[Match(wm_class='Thunar')], layout='monadtall'),
+    Group('4', label='', matches=[Match(wm_class='Thunar')], layout='monadtall'),
+    Group('5', label='󰭻', matches=[Match(wm_class='discord')], layout='monadtall'),
+    Group('6', label='󰝚', matches=[Match(wm_class='Spotify')], layout='monadtall'),
 ]
 
 for i in groups:
@@ -113,41 +113,41 @@ for i in groups:
 
 layouts = [
     Stack(
-        border_normal=deepocean['highlight'],
-        border_focus=deepocean['blue'],
+        border_normal=catppuccin['base'],
+        border_focus=catppuccin['lavender'],
         border_width=2,
         num_stacks=1,
         margin=4,
     ),
     MonadTall(
-        border_normal=deepocean['highlight'],
-        border_focus=deepocean['blue'],
+        border_normal=catppuccin['base'],
+        border_focus=catppuccin['lavender'],
         margin=4,
         border_width=2,
         single_border_width=2,
         single_margin=4,
     ),
     Columns(
-        border_normal=deepocean['highlight'],
-        border_focus=deepocean['blue'],
+        border_normal=catppuccin['base'],
+        border_focus=catppuccin['lavender'],
         border_width=2,
-        border_normal_stack=deepocean['highlight'],
-        border_focus_stack=deepocean['purple'],
+        border_normal_stack=catppuccin['base'],
+        border_focus_stack=catppuccin['lavender'],
         border_on_single=2,
         margin=4,
         margin_on_single=4,
     ),
     Max(
-        border_normal=deepocean['highlight'],
-        border_focus=deepocean['blue'],
+        border_normal=catppuccin['base'],
+        border_focus=catppuccin['lavender'],
         border_width=2,
         margin=4
     )
 ]
 
 floating_layout = Floating(
-    border_normal=deepocean['highlight'],
-    border_focus=deepocean['blue'],
+    border_normal=catppuccin['base'],
+    border_focus=catppuccin['lavender'],
     border_width=2,
     float_rules=[
         *Floating.default_float_rules,
@@ -172,144 +172,39 @@ floating_layout = Floating(
 widget_defaults = dict(
     font="FiraCode Nerd Font",
     fontsize=12,
-    padding=3,
+    padding=8,
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [Screen(top=bar.Bar([
-    widget.Spacer(
-        length=4
-    ),
     widget.TextBox(
         text='',
-        foreground=deepocean['white'],
         fontsize=20,
+        foreground=catppuccin['text']
     ),
-    widget.Spacer(
-        length=4
+    widget.TextBox(
+        text='󱎕',
+        fontsize=25,
+        padding=0
     ),
     widget.GroupBox(
-        fontsize=9,
-        margin_y=3,
-        margin_x=0,
-        padding_y=5,
-        padding_x=6,
-        borderwidth=3,
-        border_width=3,
         disable_drag=True,
-        rounded=True,
+        active=catppuccin['text'],
+        inactive=catppuccin['subtext1'],
         highlight_method='line',
-        active=deepocean['white'],
-        inactive=deepocean['tree'],
-        highlight_color=deepocean['highlight'],
-        this_current_screen_border=deepocean['blue'],
-        this_screen_border=deepocean['blue'],
+        block_highlight_text_color=catppuccin['yellow'],
+        borderwidth=0,
+        highlight_color=catppuccin['surface2'],
+        background=catppuccin['surface2']
     ),
     widget.TextBox(
-        text='|',
-        foreground=deepocean['white'],
-        fontsize=14
-    ),
-    widget.CurrentLayoutIcon(
-        padding=0,
-        scale=0.7
-    ),
-    widget.CurrentLayout(
-        foreground=deepocean['white'],
-        padding=5
-    ),
-    widget.TextBox(
-        text='|',
-        foreground=deepocean['white'],
-        fontsize=14
-    ),
-    widget.WindowName(
-        fontsize=9,
+        text='\uE0B4',
+        fontsize=20,
+        foreground=catppuccin['surface2'],
         padding=0
     ),
-    widget.TextBox(
-        text='',
-        fontsize='23',
-        foreground=deepocean['yellow'],
-        padding=0
-    ),
-    widget.CheckUpdates(
-        distro="Arch_checkupdates",
-        display_format=" {updates}",
-        no_update_string=' 0',
-        background=deepocean['yellow'],
-        foreground=deepocean['white'],
-        colour_have_updates=deepocean['highlight'],
-        colour_no_updates=deepocean['highlight'],
-        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('alacritty' + ' -e sudo pacman -Syu')},
-        padding=5,
-    ),
-    widget.TextBox(
-        text='',
-        fontsize='23',
-        foreground=deepocean['orange'],
-        background=deepocean['yellow'],
-        padding=0
-    ),
-    widget.Net(
-        format='Net:{down} ↓↑{up} ',
-        foreground=deepocean['highlight'],
-        background=deepocean['orange'],
-        padding=0,
-        prefix='M',
-    ),
-    widget.TextBox(
-        text='',
-        fontsize='23',
-        foreground=deepocean['red'],
-        background=deepocean['orange'],
-        padding=0
-    ),
-    widget.TextBox(
-        text='',
-        fontsize=15,
-        foreground=deepocean['highlight'],
-        background=deepocean['red'],
-    ),
-    widget.ThermalSensor(
-        foreground=deepocean['highlight'],
-        background=deepocean['red'],
-        format='{temp:.1f}{unit} '
-    ),
-    widget.TextBox(
-        text='',
-        fontsize='23',
-        foreground=deepocean['purple'],
-        background=deepocean['red'],
-        padding=0
-    ),
-    widget.TextBox(
-        text=' ',
-        fontsize=13,
-        foreground=deepocean['highlight'],
-        background=deepocean['purple']
-    ),
-    widget.Clock(
-        foreground=deepocean['highlight'],
-        background=deepocean['purple'],
-        format='%d/%m/%y - %H:%M ',
-    ),
-    widget.TextBox(
-        text='',
-        fontsize='23',
-        foreground=deepocean['blue'],
-        background=deepocean['purple'],
-        padding=0
-    ),
-    widget.Systray(
-        foreground=deepocean['white'],
-        background=deepocean['blue']
-    ),
-    widget.Spacer(
-        length=4,
-        background=deepocean['blue']
-    )], 
-    background=deepocean['background'], size=24, margin=4,
+    ], 
+    background=['#00000000'], size=24, margin=4,
 ))]
 
 # Drag floating layouts.
