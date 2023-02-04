@@ -252,7 +252,7 @@ screens = [Screen(top=bar.Bar([
         padding=0
     ),
     widget.Net(
-        format='Net:{down} ↓↑{up} ',
+        format=' {down} ↓↑{up} ',
         foreground=deepocean['highlight'],
         background=deepocean['orange'],
         padding=0,
