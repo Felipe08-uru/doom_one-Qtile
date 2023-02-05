@@ -19,7 +19,7 @@ from libqtile.layout.floating import Floating
 from qtile_extras import widget
 from qtile_extras.widget.decorations import BorderDecoration
 
-from colors import deepocean
+from colors import doom_one
 
 mod = "mod4"
 terminal = "alacritty"
@@ -113,41 +113,41 @@ for i in groups:
 
 layouts = [
     Stack(
-        border_normal=deepocean['highlight'],
-        border_focus=deepocean['blue'],
+        border_normal=doom_one['background'],
+        border_focus=doom_one['blue'],
         border_width=2,
         num_stacks=1,
         margin=4,
     ),
     MonadTall(
-        border_normal=deepocean['highlight'],
-        border_focus=deepocean['blue'],
+        border_normal=doom_one['background'],
+        border_focus=doom_one['blue'],
         margin=4,
         border_width=2,
         single_border_width=2,
         single_margin=4,
-    ),
+        ),
     Columns(
-        border_normal=deepocean['highlight'],
-        border_focus=deepocean['blue'],
+        border_normal=doom_one['background'],
+        border_focus=doom_one['blue'],
         border_width=2,
-        border_normal_stack=deepocean['highlight'],
-        border_focus_stack=deepocean['purple'],
+        border_normal_stack=doom_one['background'],
+        border_focus_stack=doom_one['magenta'],
         border_on_single=2,
         margin=4,
         margin_on_single=4,
     ),
     Max(
-        border_normal=deepocean['highlight'],
-        border_focus=deepocean['blue'],
+        border_normal=doom_one['background'],
+        border_focus=doom_one['blue'],
         border_width=2,
         margin=4
     )
 ]
 
 floating_layout = Floating(
-    border_normal=deepocean['highlight'],
-    border_focus=deepocean['blue'],
+    border_normal=doom_one['background'],
+    border_focus=doom_one['blue'],
     border_width=2,
     float_rules=[
         *Floating.default_float_rules,
@@ -178,138 +178,149 @@ extension_defaults = widget_defaults.copy()
 
 screens = [Screen(top=bar.Bar([
     widget.Spacer(
-        length=4
+        length=4,
+        background=doom_one['blue']
     ),
     widget.TextBox(
         text='',
-        foreground=deepocean['white'],
+        foreground=doom_one['background'],
+        background=doom_one['blue'],
         fontsize=20,
     ),
-    widget.Spacer(
-        length=4
+    widget.TextBox(
+        text='',
+        fontsize=23,
+        foreground=doom_one['blue'],
+        background=doom_one['background'],
+        padding=0
     ),
     widget.GroupBox(
-        fontsize=9,
-        margin_y=3,
-        margin_x=0,
-        padding_y=5,
-        padding_x=6,
-        borderwidth=3,
-        border_width=3,
         disable_drag=True,
-        rounded=True,
+        fontsize=9,
+        active=doom_one['foreground'],
+        inactive=doom_one['base5'],
         highlight_method='line',
-        active=deepocean['white'],
-        inactive=deepocean['tree'],
-        highlight_color=deepocean['highlight'],
-        this_current_screen_border=deepocean['blue'],
-        this_screen_border=deepocean['blue'],
+        block_highlight_text_color=doom_one['blue'],
+        borderwidth=0,
+        highlight_color=doom_one['background'],
+        background=doom_one['background']
     ),
     widget.TextBox(
-        text='|',
-        foreground=deepocean['white'],
-        fontsize=14
+        text='',
+        fontsize='23',
+        foreground=doom_one['foreground'],
+        background=doom_one['background'],
+        padding=0
     ),
     widget.CurrentLayoutIcon(
         padding=0,
-        scale=0.7
+        scale=0.7,
+        background=doom_one['background']
     ),
     widget.CurrentLayout(
-        foreground=deepocean['white'],
-        padding=5
+        foreground=doom_one['foreground'],
+        padding=5,
+        background=doom_one['background'],
     ),
     widget.TextBox(
-        text='|',
-        foreground=deepocean['white'],
-        fontsize=14
+        text='',
+        fontsize='23',
+        foreground=doom_one['foreground'],
+        background=doom_one['background'],
+        padding=0
+    ),
+    widget.TextBox(
+        text='',
+        fontsize=23,
+        foreground=doom_one['background'],
+        padding=0
     ),
     widget.WindowName(
         fontsize=9,
-        padding=0
+        padding=8
     ),
     widget.TextBox(
         text='',
         fontsize='23',
-        foreground=deepocean['yellow'],
+        foreground=doom_one['background'],
         padding=0
     ),
     widget.CheckUpdates(
         distro="Arch_checkupdates",
         display_format=" {updates}",
         no_update_string=' 0',
-        background=deepocean['yellow'],
-        foreground=deepocean['white'],
-        colour_have_updates=deepocean['highlight'],
-        colour_no_updates=deepocean['highlight'],
+        background=doom_one['background'],
+        foreground=doom_one['blue'],
+        colour_have_updates=doom_one['blue'],
+        colour_no_updates=doom_one['blue'],
         mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('alacritty' + ' -e sudo pacman -Syu')},
         padding=5,
     ),
     widget.TextBox(
         text='',
         fontsize='23',
-        foreground=deepocean['orange'],
-        background=deepocean['yellow'],
+        foreground=doom_one['blue'],
+        background=doom_one['background'],
         padding=0
     ),
     widget.Net(
         format=' {down} ↓↑{up} ',
-        foreground=deepocean['highlight'],
-        background=deepocean['orange'],
+        foreground=doom_one['background'],
+        background=doom_one['blue'],
         padding=0,
         prefix='M',
     ),
     widget.TextBox(
         text='',
         fontsize='23',
-        foreground=deepocean['red'],
-        background=deepocean['orange'],
+        foreground=doom_one['background'],
+        background=doom_one['blue'],
         padding=0
     ),
     widget.TextBox(
         text='',
         fontsize=15,
-        foreground=deepocean['highlight'],
-        background=deepocean['red'],
+        foreground=doom_one['blue'],
+        background=doom_one['background'],
     ),
     widget.ThermalSensor(
-        foreground=deepocean['highlight'],
-        background=deepocean['red'],
+        foreground=doom_one['blue'],
+        background=doom_one['background'],
         format='{temp:.1f}{unit} '
     ),
     widget.TextBox(
-        text='',
+        text='',
         fontsize='23',
-        foreground=deepocean['purple'],
-        background=deepocean['red'],
+        foreground=doom_one['blue'],
+        background=doom_one['background'],
         padding=0
     ),
     widget.TextBox(
         text=' ',
         fontsize=13,
-        foreground=deepocean['highlight'],
-        background=deepocean['purple']
+        foreground=doom_one['blue'],
+        background=doom_one['background']
     ),
     widget.Clock(
-        foreground=deepocean['highlight'],
-        background=deepocean['purple'],
+        foreground=doom_one['blue'],
+        background=doom_one['background'],
         format='%d/%m/%y - %H:%M ',
     ),
     widget.TextBox(
         text='',
         fontsize='23',
-        foreground=deepocean['blue'],
-        background=deepocean['purple'],
+        foreground=doom_one['blue'],
+        background=doom_one['background'],
         padding=0
     ),
     widget.Systray(
-        foreground=deepocean['white'],
-        background=deepocean['blue']
+        background=doom_one['blue']
     ),
     widget.Spacer(
         length=4,
-        background=deepocean['blue']
+        background=doom_one['blue']
     )], 
-    background=deepocean['background'], size=24, margin=4,
+    background=doom_one['base0'], size=24, margin=4,
 ))]
 
 # Drag floating layouts.
