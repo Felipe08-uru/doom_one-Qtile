@@ -117,15 +117,15 @@ layouts = [
         border_focus=doom_one['blue'],
         border_width=2,
         num_stacks=1,
-        margin=4,
+        margin=8,
     ),
     MonadTall(
         border_normal=doom_one['background'],
         border_focus=doom_one['blue'],
-        margin=4,
+        margin=8,
         border_width=2,
         single_border_width=2,
-        single_margin=4,
+        single_margin=8,
         ),
     Columns(
         border_normal=doom_one['background'],
@@ -134,14 +134,14 @@ layouts = [
         border_normal_stack=doom_one['background'],
         border_focus_stack=doom_one['magenta'],
         border_on_single=2,
-        margin=4,
-        margin_on_single=4,
+        margin=8,
+        margin_on_single=8,
     ),
     Max(
         border_normal=doom_one['background'],
         border_focus=doom_one['blue'],
         border_width=2,
-        margin=4
+        margin=8
     )
 ]
 
@@ -320,7 +320,7 @@ screens = [Screen(top=bar.Bar([
         length=4,
         background=doom_one['blue']
     )], 
-    background=doom_one['base0'], size=24, margin=4,
+    background=doom_one['base0'], size=24, margin=0,
 ))]
 
 # Drag floating layouts.
