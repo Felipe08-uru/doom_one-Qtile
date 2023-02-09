@@ -38,7 +38,7 @@ keys = [
 
     # Keybindings for resizing windows in MonadTall layout
     Key([mod], "i", lazy.layout.grow()),
-    Key([mod], "m", lazy.layout.shrink()),
+    Key([mod], "d", lazy.layout.shrink()),
     Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "o", lazy.layout.maximize()),
     Key([mod, "control"], "space", lazy.layout.flip()),
@@ -86,9 +86,9 @@ keys = [
 
 groups = [
     Group('1', label='WWW', matches=[Match(wm_class='firefox')], layout='max'),
-    Group('2', label='SYS', layout='monadtall'),
-    Group('3', label='DOC', matches=[Match(wm_class='Thunar')], layout='monadtall'),
-    Group('4', label='DEV', matches=[Match(wm_class='Thunar')], layout='monadtall'),
+    Group('2', label='SYS', matches=[Match(wm_class='')], layout='monadtall'),
+    Group('3', label='DEV', matches=[Match(wm_class='')], layout='monadtall'),
+    Group('4', label='DOC', matches=[Match(wm_class='Thunar')], layout='monadtall'),
     Group('5', label='CHAT', matches=[Match(wm_class='discord')], layout='monadtall'),
     Group('6', label='MUS', matches=[Match(wm_class='Spotify')], layout='monadtall'),
 ]
@@ -207,7 +207,7 @@ screens = [Screen(top=bar.Bar([
     ),
     widget.TextBox(
         text='',
-        fontsize='23',
+        fontsize='18',
         foreground=doom_one['foreground'],
         background=doom_one['background'],
         padding=0
@@ -224,7 +224,7 @@ screens = [Screen(top=bar.Bar([
     ),
     widget.TextBox(
         text='',
-        fontsize='23',
+        fontsize='18',
         foreground=doom_one['foreground'],
         background=doom_one['background'],
         padding=0
@@ -242,75 +242,75 @@ screens = [Screen(top=bar.Bar([
     widget.TextBox(
         text='',
         fontsize='23',
-        foreground=doom_one['background'],
+        foreground=doom_one['yellow'],
         padding=0
     ),
     widget.CheckUpdates(
         distro="Arch_checkupdates",
         display_format=" {updates}",
         no_update_string=' 0',
-        background=doom_one['background'],
-        foreground=doom_one['blue'],
-        colour_have_updates=doom_one['blue'],
-        colour_no_updates=doom_one['blue'],
+        background=doom_one['yellow'],
+        foreground=doom_one['background'],
+        colour_have_updates=doom_one['background'],
+        colour_no_updates=doom_one['background'],
         mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('alacritty' + ' -e sudo pacman -Syu')},
         padding=5,
     ),
     widget.TextBox(
         text='',
         fontsize='23',
-        foreground=doom_one['blue'],
-        background=doom_one['background'],
+        foreground=doom_one['orange'],
+        background=doom_one['yellow'],
         padding=0
     ),
     widget.Net(
         format=' {down} ↓↑{up} ',
         foreground=doom_one['background'],
-        background=doom_one['blue'],
+        background=doom_one['orange'],
         padding=0,
         prefix='M',
     ),
     widget.TextBox(
         text='',
         fontsize='23',
-        foreground=doom_one['background'],
-        background=doom_one['blue'],
+        foreground=doom_one['red'],
+        background=doom_one['orange'],
         padding=0
     ),
     widget.TextBox(
         text='',
         fontsize=15,
-        foreground=doom_one['blue'],
-        background=doom_one['background'],
+        foreground=doom_one['background'],
+        background=doom_one['red'],
     ),
     widget.ThermalSensor(
-        foreground=doom_one['blue'],
-        background=doom_one['background'],
+        foreground=doom_one['background'],
+        background=doom_one['red'],
         format='{temp:.1f}{unit} '
     ),
     widget.TextBox(
-        text='',
+        text='',
         fontsize='23',
-        foreground=doom_one['blue'],
-        background=doom_one['background'],
+        foreground=doom_one['magenta'],
+        background=doom_one['red'],
         padding=0
     ),
     widget.TextBox(
         text=' ',
         fontsize=13,
-        foreground=doom_one['blue'],
-        background=doom_one['background']
+        foreground=doom_one['background'],
+        background=doom_one['magenta']
     ),
     widget.Clock(
-        foreground=doom_one['blue'],
-        background=doom_one['background'],
+        foreground=doom_one['background'],
+        background=doom_one['magenta'],
         format='%d/%m/%y - %H:%M ',
     ),
     widget.TextBox(
         text='',
         fontsize='23',
         foreground=doom_one['blue'],
-        background=doom_one['background'],
+        background=doom_one['magenta'],
         padding=0
     ),
     widget.Systray(
